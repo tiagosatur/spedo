@@ -1,0 +1,639 @@
+@font-face
+  font-family 'CairoRegular'
+  src url('../fonts/Cairo/Cairo-Regular.ttf') format('truetype')
+  font-weight normal
+  font-style normal
+
+@font-face
+  font-family 'CairoSemiBold'
+  src url('../fonts/Cairo/Cairo-SemiBold.ttf') format('truetype')
+  font-weight normal
+  font-style normal
+
+@font-face
+  font-family 'GeorgiaRegular'
+  src url('../fonts/Georgia/Georgia-Regular.ttf') format('truetype')
+  font-weight normal
+  font-style normal
+
+@font-face
+  font-family 'GeorgiaBold'
+  src url('../fonts/Georgia/Georgia-Bold.ttf') format('truetype')
+  font-weight normal
+  font-style normal
+
+@font-face
+  font-family 'MontserratRegular'
+  src url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype')
+  font-weight normal
+  font-style normal
+
+@font-face
+  font-family 'MontserratBold'
+  src url('../fonts/Montserrat/Montserrat-Bold.ttf') format('truetype')
+  font-weight normal
+  font-style normal
+
+@font-face
+  font-family 'RalewayRegular'
+  src url('../fonts/Raleway/Raleway-Regular.ttf') format('truetype')
+  font-weight normal
+  font-style normal
+
+@font-face
+  font-family 'RalewaySemiBold'
+  src url('../fonts/Raleway/Raleway-SemiBold.ttf') format('truetype')
+  font-weight normal
+  font-style normal
+
+*
+  padding 0
+  margin 0
+  box-sizing border-box
+
+body
+
+  a
+    color inherit //força os links a ter a cor de seus pais
+    text-decoration none
+  ul
+    list-style none
+
+.main-header
+  min-height 430px //somente height faz com que o slider sobreponha o header, nao sei o motivo
+  margin auto
+  background white
+  text-transform uppercase
+
+  &__logo
+    font bold 36px 'GeorgiaBold'
+    text-align center
+    margin 100px auto
+    color #313131
+
+.top-nav
+  height 88px
+  background black
+  font 12px 'MontserratRegular'
+  padding 0 3%
+
+  &__menu
+    display flex
+    float left
+    flex-wrap wrap
+
+    &-item
+      display inline
+      position relative
+
+      & a
+        display inline-block
+        padding 0 35px
+        color white
+        font-weight 600
+        line-height 88px
+        &:hover
+          color greenyellow
+
+      &__us-flag
+        background-image embedurl('images/top-nav__menu-item_us-flag.png')
+        background-repeat no-repeat
+        background-position left 48%
+        background-repeat no-repeat
+
+  &__items-count
+    background-color red
+    width 20px
+    height 20px
+    line-height 20px
+    display inline-block
+    position absolute
+    top -15px
+    border-radius 20px
+    text-align center
+
+  &__admin
+    float right
+
+    &-item
+      @extends .top-nav__menu-item
+      & a
+        @extends .top-nav__menu-item a
+        &:hover
+          color greenyellow
+  &__submenu
+    position absolute
+    display none
+    top -10px
+    left 0
+
+    &-item
+      display block
+      width 100px
+      border 1px solid white
+.fa
+  &-left-icon
+    margin-right 15px
+
+  &-angle-down
+    margin-left 5px
+
+.main-nav
+  font 600 16px 'CairoSemiBold'
+  padding 0 calc(50% - 926px/2)
+
+  &__menu
+
+    &-item
+      float left
+      margin-right 35px
+
+      & a
+        color #6e6e6e
+        font-size 16px
+        padding 20px 0
+
+      & a:hover
+        color #000000
+      &--search //li
+        float right
+
+      &__search
+        color #6e6e6e
+
+        & input[type='text']
+          width 90px
+          font 600 16px 'CairoSemiBold'
+          text-transform uppercase
+          //padding-left 20px
+          border none
+          color #6e6e6e
+          height 30px
+          outline 0
+
+bgColors =  greenyellow powderblue khaki aquamarine
+
+.slider-container
+  width 100% !important
+  height 520px !important
+
+.main-slider
+  height 520px !important
+  padding 105px calc(50% - 926px/2) 0
+  position relative
+  width 100% !important
+
+
+  for bgColor, i in bgColors
+    &:nth-of-type({i + 1})
+      background-color bgColor
+
+  imgs = '/images/main-slider_1.png' '/images/main-slider_2.png' '/images/main-slider_3.png'
+  for img, i in imgs
+    &:nth-of-type({i + 1}):after //aplica a regra no seletor atual
+      background-image embedurl(img)
+      background-position right center
+      content " "
+      display block
+      position absolute
+      background-repeat no-repeat
+      background-size auto 100%
+      width 400px
+      height 605px
+      bottom 0 //verificado no inspetor de elementos do chrome
+      right calc(50% - 950px/2)
+
+  &__launch
+    font 24px normal 'CairoRegular'
+    text-transform uppercase
+    margin-bottom 40px
+
+  &__title
+    width 460px
+    font bold 36px 'GeorgiaBold'
+    text-transform uppercase
+    margin-bottom 40px
+
+  &__text
+    width 460px
+    font 600 14px 'RalewaySemiBold'
+    margin-bottom 45px
+    color #6e6e6e
+
+  &__img
+    float right
+    position relative
+    top -470px
+    right 300px
+
+
+  &__button
+    width 152px
+
+    & a
+      line-height 50px
+      display block
+      height 50px //para que toda a área do botaão seja clicável
+      padding 0 25px
+      font-size 14px
+      font-family 'GeorgiaRegular'
+      color #ffffff
+      text-transform uppercase
+      background #000000
+
+.featured-categories
+  margin-top 100px
+
+  &__items
+    width 1140px
+    margin auto
+    display flex
+    flex-wrap wrap
+
+  &__item
+    display flex
+    flex-grow 1
+    padding 110px 0 0 32px
+    flex-direction column
+    position relative //para que o a vazio possa cobrir toda a área
+    transition all 0.2s
+
+    & a:nth-child(1)
+      height 100%
+      width 100%
+      position absolute
+      left 0
+      top 0
+
+    & a:nth-child(2)
+      font 18px 'GeorgiaRegular'
+      text-transform uppercase
+      width 85px
+      float left
+      margin-bottom 5px
+
+    & a:nth-child(3)
+      font 10px 'GeorgiaRegular'
+      text-transform uppercase
+      width 110px
+      color #696969
+
+
+  &__item:nth-child(1)
+    width 650px
+    height 276px
+    background #e6eef0
+    margin 0 30px 45px 0
+    background #e6eef0 embedurl('assets/images/featured-categories__item_1.png') no-repeat 103% top
+
+    &:hover
+      background darken(#e6eef0, 5%) embedurl('assets/images/featured-categories__item_1.png') no-repeat 103% top
+
+  &__item:nth-child(2)
+    width 458px
+    height 438px
+    //border 1px solid brown
+    background #f5f5f5 embedurl('assets/images/featured-categories__item_2.png') no-repeat 100% bottom
+
+    &:hover
+      background darken(#f5f5f5, 5%) embedurl('assets/images/featured-categories__item_2.png') no-repeat 100% bottom
+
+  &__item:nth-child(3)
+    width 650px
+    height 438px
+    background #fbfafa embedurl('assets/images/featured-categories__item_3.png') no-repeat 100% top
+    //border 1px solid brown
+    margin-top -115px
+
+    &:hover
+      background darken(#fbfafa, 5%) embedurl('assets/images/featured-categories__item_3.png') no-repeat 100% top
+
+  &__item:nth-child(4)
+    width 458px
+    height 276px
+    background #e6eef0 embedurl('assets/images/featured-categories__item_4.png') no-repeat 100% -5%
+    margin 45px 0 0 30px
+
+    &:hover
+      background darken(#e6eef0, 5%) embedurl('assets/images/featured-categories__item_4.png') no-repeat 100% -5%
+
+.main-products
+  text-transform uppercase
+  margin-top 100px
+
+  &__title
+    font bold 30px 'GeorgiaBold'
+    text-align center
+    margin-bottom 25px
+
+  &__subtitle
+    font 13px 'CairoRegular'
+    color #6e6e6e
+    text-align center
+    margin-bottom 100px
+
+  &__items
+    width 1140px
+    margin auto
+    display flex
+    flex-wrap wrap
+    flex-direction row
+    justify-content space-between
+
+
+  &__item
+    width 359px
+    height 452px
+    background #e6eef0 no-repeat center
+    background-size auto 100%
+    background-position center 0
+    margin-bottom 70px
+    z-index 0
+    transition all 0.2s
+    overflow hidden
+
+    &:hover
+      background-color #d2fbfb
+      background-size auto 120%
+      box-shadow 0 0 15px rgba(#000000, 0.15)
+      & .product__add-to-cart
+      & .product__show-gallery
+        display block
+      & .product__info
+        bottom 0
+    &:hover .product__buttons-container
+      background-color rgba(#ccffff, 0.76)
+
+.product
+  font-size 14px
+  position relative
+
+  &__buttons-container
+    width 100%
+    height 264px
+    background-color transparent
+    top 0
+    left 0
+    position absolute
+
+
+  &__buttons
+    width 176px
+    line-height 40px
+    font-family 'GeorgiaRegular'
+    text-align center
+    display none
+
+  &__add-to-cart
+    @extends .product__buttons
+    color white
+    background black
+    margin 85px auto 10px
+
+
+
+  &__show-gallery
+    @extends .product__buttons
+    color black
+    background transparent
+    margin 0 auto
+    border 1px solid black
+
+  &__image
+    position absolute
+    z-index -1
+
+.product__info
+  width 360px
+  height 190px
+  background white
+  padding 20px 30px
+  font 14px 'CairoRegular'
+  position absolute
+  bottom -131px
+  left 0
+  transition all 0.2s
+
+  &-name, &-colors
+    font-weight bold
+
+  &-name
+    line-height 0
+    margin-bottom 5px
+
+  &-collection, &-sizes
+    color #6e6e6e
+
+  &-price
+    float right
+    margin -40px 0
+    font bold 24px 'MontserratBold'
+    color #00cccc
+
+  &-sizes strong
+    color black
+    display block
+
+.product-colors-circles
+  height 20px
+  width 20px
+  border-radius 50%
+  margin 0 10px 0 0
+
+
+.product-colors
+  &__item
+    display inline-block //somente block: o círculo se ajusta ao conteúdo da li
+
+  circleColors = gold tomato deepskyblue darkmagenta //#0D61AB #E48203 #7AC528 #842A7C #9A012D //[black white red green]
+
+  for color,i in circleColors
+   .product-colors__item:nth-child({i+1})
+     @extends .product-colors-circles
+     background-color color
+
+.design-service
+  height 560px
+  padding-left calc(50% - 1140px/2)
+  padding-right calc(50% - 1140px/2)
+  background embedurl('assets/images/design-service_bg.png') no-repeat 200%
+  text-transform uppercase
+  margin 100px 0 70px 0
+
+  &__price
+    font 18px 'CairoRegular'
+    padding-top 210px
+    margin-bottom 32px
+
+  &__title
+    font bold 30px 'GeorgiaBold'
+    width 440px
+    margin-bottom 32px
+
+  &__call-to-action
+    color #666666
+
+.offers
+  height 930px
+  width 1140px
+  margin auto
+  padding-top 290px
+  background embedurl('assets/images/offers__bg.png') no-repeat right
+
+  &__title
+    font bold 36px 'GeorgiaBold'
+    line-height 56px
+    text-transform uppercase
+    width 520px
+    margin 0 0 65px
+
+  &__text
+    font 500 18px 'RalewayRegular'
+    line-height 30px
+    width 585px
+    text-align justify
+    margin-bottom 120px
+    color #6e6e6e
+
+  &__button
+    width 191px
+
+    a
+      display block
+      background-color black
+      color white
+      text-align center
+      text-transform uppercase
+      font 14px/63px 'GeorgiaRegular'
+
+.newsletter
+  width 1140px
+  height 260px
+  border-bottom 1px solid #cbcbcb
+  margin auto
+
+  &__text
+    margin-top 125px
+    font 600 14px 'CairoSemiBold'
+    text-transform uppercase
+    float left
+    letter-spacing 1px
+
+  &__form
+    float right
+    margin-top 100px
+
+    & input
+      text-transform uppercase
+      height 63px
+      border 1px solid black
+
+    & input[type='text']
+      width 290px
+      margin 0 -5px 0
+      font 14px 'CairoRegular'
+      padding-left 20px
+
+    & input[type='submit']
+      width 121px
+      font bold 14px 'GeorgiaBold'
+      background black
+      color white
+      cursor pointer
+
+.main-footer
+  height 220px
+  text-transform uppercase
+  width 1140px
+  margin auto
+  font 14px 'GeorgiaRegular'
+
+  &__logo
+    font bold 30px 'GeorgiaBold'
+    float left
+    margin 100px 160px 0 0
+    color #313131
+
+.footer-nav__menu
+  float left
+  font 14px 'GeorgiaRegular'
+  color #6e6e6e
+  margin 110px 115px 0 0
+
+  &-item
+    float left
+    display block
+    margin-right 30px
+
+  &-item a
+    padding 20px 0
+
+  &-item:hover
+    color #000000
+
+.footer-social-media
+  float right
+  margin-top 110px
+
+  &__item
+    float left
+
+    &--title
+      margin-right 50px
+    &--facebook
+      margin-right 10px
+    &--facebook, &--twitter
+      color #6e6e6e
+    &--facebook:hover
+    &--twitter:hover
+      color #000000
+.slider-controls
+  position relative
+
+
+.slider-arrow
+  &__left, &__right
+    display flex
+    flex-direction row
+    justify-content center
+    align-items center
+    height 78px
+    line-height 78px
+    width 78px
+    background-color rgba(white, 0.75) //rgba para o pbackground possuir transparencia e não o texto
+    opacity 0.1
+    position absolute
+    z-index 999
+    text-align center
+
+    &:hover
+      opacity 1
+
+  &__left
+    left 0
+    top 200px
+    border-radius 0 39px 39px 0
+
+  &__right
+    right 0
+    top 200px
+    border-radius 39px 0 0 39px
+
+.slider-nav
+  position absolute
+  z-index 999
+  right calc(50% - 950px/2)
+  top 200px
+
+  a
+    text-indent -9999em
+    display block
+    width 12px
+    height 12px
+    background black
+    border 1px solid black
+    margin 10px
+    border-radius 12px
+
+  .activeSlide
+    background transparent

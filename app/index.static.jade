@@ -1,0 +1,183 @@
+-
+  var sliderContent = [
+    {
+      launch: 'Next April',
+      title: 'Fresh collection for summer',
+      text: 'The whole T-shirt bra concept is really founded upon the idea of cudding your breasts, which is more of a problem here than, say, in Western Europe.'
+      
+    },
+    {
+      launch: 'Next August',
+      title: 'New jeans collection',
+      text: 'My favorite blouse has to be Gray Matters. They just may be the most beautiful shoes I have ever seen, and they are as wearable as they are beautiful.'
+      
+    },
+    {
+      launch: 'Next Week',
+      title: 'Fashion dress launch',
+      text: 'The slight details she incorporates into her designs elevate the pieces, whether its a slight ruffle detail on the hem of a skirt or the bell of a sleeve.'      
+    }    
+  ]   
+-
+  var products = [
+    {
+      name: 'A Fantastic black blouse.',      
+      collection: 'Party dress',
+      price: '$ 99'
+    },
+    {
+      name: 'A Fantastic jeans.',      
+      collection: 'Summer dress',
+      price: '$ 65'
+    },
+    {
+      name: 'A Fantastic beat.',      
+      collection: 'Winter dress',
+      price: '$ 65'
+    },
+    {
+      name: 'A Fantastic black dress.',      
+      collection: 'Party dress',
+      price: '$ 99'
+    },
+    {
+      name: 'A Fantastic sweater.',      
+      collection: 'Spring dress',
+      price: '$ 65'
+    },
+    {
+      name: 'A Fantastic pullover.',
+      collection: 'Casual dress',
+      price: '$ 65'
+    }
+  ]   
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width')
+    title Spedo template
+    link(rel='stylesheet', href='/app.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    
+    script(src='/vendor.js')    
+    script(src='/app.js')
+    script require('initialize');
+  body
+    header.main-header
+      nav.top-nav
+        ul.top-nav__menu
+          li.top-nav__menu-item: #[a(href="#").top-nav__menu-item__us-flag English #[i.fa.fa-angle-down]] 
+            ul.top-nav__submenu
+              li.top-nav__submenu-item: a(href="#") English
+              li.top-nav__submenu-item: a(href="#") Portuguese
+              li.top-nav__submenu-item: a(href="#") Spanish
+          li.top-nav__menu-item: #[a(href="#") #[i.fa.fa-usd.fa-lg.fa-left-icon] USD #[i.fa.fa-angle-down]]
+            ul.top-nav__submenu
+              li.top-nav__submenu-item: a(href="#") $ USD
+              li.top-nav__submenu-item: a(href="#") R$ BRL
+              li.top-nav__submenu-item: a(href="#") € EUR
+          li.top-nav__menu-item: #[a(href="#") #[i.fa.fa-truck.fa-lg.fa-left-icon] Track your order]
+          li.top-nav__menu-item: #[a(href="#") #[i.fa.fa-map-marker.fa-lg.fa-left-icon] Store location]
+        ul.top-nav__admin
+          li.top-nav__admin-item: #[a(href="#") #[i.fa.fa-user-o.fa-lg.fa-left-icon] Login]
+          li.top-nav__admin-item: #[a(href="#") #[i.fa.fa-user-plus.fa-lg.fa-left-icon] Sign up]
+          li.top-nav__admin-item
+            a(href="#")
+              i.fa.fa-shopping-cart.fa-lg
+              span.top-nav__items-count 5
+            
+      h1.main-header__logo Spedo
+        
+      nav.main-nav
+        ul.main-nav__menu
+          li.main-nav__menu-item: #[a(href="#") Home #[i.fa.fa-angle-down]]
+          li.main-nav__menu-item: #[a(href="#") Catalog #[i.fa.fa-angle-down]]
+          li.main-nav__menu-item: #[a(href="#") About #[i.fa.fa-angle-down]]
+          li.main-nav__menu-item: #[a(href="#") Prices #[i.fa.fa-angle-down]]
+          li.main-nav__menu-item: a(href="#") Blog
+          li.main-nav__menu-item: a(href="#") Contact
+          li.main-nav__menu-item.main-nav__menu-item--search
+            form.main-nav__menu-item__search: #[i.fa.fa-search] #[input(type="text", placeholder=' Search')]
+    div.slider-controls
+      #[a(href="#").slider-arrow__left #[i.fa.fa-angle-left.fa-2x]]
+      #[a(href="#").slider-arrow__right #[i.fa.fa-angle-right.fa-2x]]
+      div.slider-nav
+      div.slider-container      
+        - for slide,i in sliderContent
+          section(class='main-slider main-slider--' + (i + 1))
+            p.main-slider__launch= slide.launch
+            p.main-slider__title= slide.title
+            p.main-slider__text= slide.text        
+            //p: img(src='/images/main-slider_'+(i+1)+'.png').main-slider__img
+            p.main-slider__button: #[a(href="#") Shop now #[i.fa.fa-angle-right]]
+                  
+    section.featured-categories
+      ul.featured-categories__items
+        li.featured-categories__item: #[a(href="#")] #[a(href="#") Best of whites.] #[a(href="#") View products #[i.fa.fa-angle-right]]
+        li.featured-categories__item: #[a(href="#")] #[a(href="#") Best of red.] #[a(href="#") View products #[i.fa.fa-angle-right]]
+        li.featured-categories__item: #[a(href="#")] #[a(href="#") Best of summer.] #[a(href="#") View products #[i.fa.fa-angle-right]]
+        li.featured-categories__item: #[a(href="#")] #[a(href="#") Best of black.] #[a(href="#") View products #[i.fa.fa-angle-right]]   
+          
+    section.main-products
+      h2.main-products__title Our products
+      p.main-products__subtitle New products every fucken day.
+      ul.main-products__items        
+        - for product,i in products
+          li.main-products__item.product(style='background-image: url(/images/product__image_'+(i+1)+'.png)')
+            //img.product__image(src='/images/product__image_'+(i+1)+'.png')            
+            div.product__buttons-container
+              a.product__add-to-cart(href="#") Add to cart
+              a.product__show-gallery(href="#") Show gallery          
+            div.product__info
+              p.product__info-name= product.name
+              p.product__info-collection= product.collection
+              p.product__info-price= product.price
+              p.product__info-sizes: #[strong Sizes] xs, sm, l, xl, xxl 
+              p.product__info-colors Colors
+              ul.product-colors
+                li.product-colors__item
+                li.product-colors__item
+                li.product-colors__item
+                li.product-colors__item
+              
+    section.design-service
+      p.design-service__price Only $20
+      p.design-service__title Design your product now
+      p.design-service__call-to-action: #[a(href='#') Shop now #[i.fa.fa-angle-right]]
+    
+    section.offers
+      p.offers__title Wait for red fridays in few weeks.
+      p.offers__text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      p.offers__button: #[a(href='#') Check offers #[i.fa.fa-angle-right]]
+      
+    section.newsletter
+      p.newsletter__text Stay updated on latest products releases and promotions
+      form(action="#").newsletter__form
+        input(type="text", placeholder='Your email adress ...')
+        input(type="submit", value='Submit')
+    
+    footer.main-footer
+      nav.footer-nav
+        p.main-footer__logo: a(href='#') Spedo
+      
+        ul.footer-nav__menu
+          li.footer-nav__menu-item: a(href="#") Search
+          li.footer-nav__menu-item: a(href="#") About us
+          li.footer-nav__menu-item: a(href="#") FAQ
+          li.footer-nav__menu-item: a(href="#") Terms
+          li.footer-nav__menu-item: a(href="#") Return policy
+          
+      ul.footer-social-media
+        li.footer-social-media__item.footer-social-media__item--title Follow us
+        li.footer-social-media__item.footer-social-media__item--facebook: #[a(href="#") #[i.fa.fa-facebook-square.fa-lg]]
+        li.footer-social-media__item.footer-social-media__item--twitter: #[a(href="#") #[i.fa.fa-twitter.fa-lg]]
+  
+  
+  script(src='/vendor.js')
+  scipt(src='app.js')
+  script require('initialize')
+  script(src='http://code.jquery.com/jquery-2.0.0.js')
+  script(src='http://malsup.github.io/jquery.cycle.all.js')
+  
